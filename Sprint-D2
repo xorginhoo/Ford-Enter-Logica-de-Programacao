@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Desafio 1</title>
+</head>
+<body>
+  <script>
+    function quebrarlinha() {
+      document.write("<br>");
+    }
+
+    function mostra(texto) {
+      document.write(texto);
+      quebrarlinha();
+    }
+
+
+
+
+    var distancia_Percorrida = parseFloat(prompt("Digite a distância da sua casa até o trabalho (em km):"));
+    while(isNaN(distancia_Percorrida)){
+      distancia_Percorrida = parseFloat(prompt("Valor inválido! Digite novamente a distância da sua casa até o trabalho (em km): "));
+    }
+
+    var consumo_Medio = parseFloat(prompt("Digite o consumo médio do veículo (km/L):"));
+    while(isNaN(consumo_Medio)){
+      consumo_Medio = parseFloat(prompt("Valor inválido! Digite novamente o consumo médio do veículo (km/L): "));
+    }
+
+    var consumo_Necessario_Litros = distancia_Percorrida / consumo_Medio;
+    mostra("O consumo necessário é " + consumo_Necessario_Litros.toFixed(2) + " litros");
+
+    var quantidade_Postos_Pesquisados = parseInt(prompt("Digite a quantidade de postos pesquisados:"));
+    
+
+
+
+    
+    var soma_total_Valores_Pesquisados = 0;
+    var menor_Valor_Pesquisado = Infinity; 
+
+
+
+
+
+    // Loop para valores dos postos
+    for (var i = 1; i <= quantidade_Postos_Pesquisados; i++) {
+      var valor = parseFloat(prompt("Digite o valor do combustível no posto " + i + ":"));
+      
+      while(isNaN(valor)) {
+        valor = parseFloat(prompt("Valor inválido! Digite novamente o valor do combustível no posto " + i + ":"));
+      }
+
+      soma_total_Valores_Pesquisados += valor;
+
+      if (valor < menor_Valor_Pesquisado) {
+        menor_Valor_Pesquisado = valor;
+      }
+    }
+
+
+
+    var media = soma_total_Valores_Pesquisados / quantidade_Postos_Pesquisados;
+    var gasto_Diario = 2 * (consumo_Necessario_Litros * menor_Valor_Pesquisado);
+
+
+
+    // Saída
+    mostra("O menor valor pesquisado foi: R$ " + menor_Valor_Pesquisado.toFixed(2));
+    mostra("A média de preços dos postos foi: R$ " + media.toFixed(2));
+    mostra("O gasto diário (ida e volta) é: R$ " + gasto_Diario.toFixed(2));
+
+
+
+    
+  </script>
+</body>
+</html>
